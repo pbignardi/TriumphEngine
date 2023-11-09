@@ -54,3 +54,10 @@ end
     @test maxval == 129
     @test maxind == 4
 end
+
+@testset "Utility" begin
+    first_hand = [5B, 6C, 9D]
+    other_hand = [10S, 1D, 2D, 4B]
+    third_hand = [4D, 5C, 9B, 1S]
+    @test whostarts(first_hand, other_hand, third_hand) == 3
+end
