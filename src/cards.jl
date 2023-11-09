@@ -9,7 +9,7 @@ export S, C, D, B
 # utility functions
 export points, deal, ordered_deck, shuffled_deck
 export issuit, isspade, iscoppe, isdenari, isbastoni, istrump
-export evaltrick, findwinning, settrump
+export evaltrick, findwinning, settrump, whostarts
 
 """
 Rank
@@ -230,3 +230,12 @@ shuffled_deck() = Random.shuffle(ordered_deck())
 Deal deck cards to the four players
 """
 deal(d) = collect.(IterTools.partition(d, 10))
+
+""" 
+Find who has the 4 of Denari to start the game
+"""
+whostarts(hands::Vector{Card}...) = begin
+    findfirst(hands) do hand
+        4D in hand
+    end
+end
